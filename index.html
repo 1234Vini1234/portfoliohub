@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Vinícius Eloi Corrêa — desenvolvedor full-stack focado em agentes de IA, RAG, .NET e Next.js." />
+  <meta name="author" content="Vinícius Eloi Corrêa" />
+
+  <!-- Open Graph (compartilhamento em redes) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Vinícius Eloi Corrêa — Portfólio" />
+  <meta property="og:description" content="Desenvolvedor full-stack · IA aplicada, RAG, .NET e Next.js." />
+
+  <title>Portfólio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#topo" class="nav-brand"><span data-bind="brand">Portfolio</span><span class="dot">.</span></a>
+      <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#ia">Agentes de IA</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero" id="topo">
+    <div class="wrap hero-inner">
+      <span class="badge"><span class="pulse"></span> Desenvolvedor na Level33</span>
+      <h1>Olá, sou <span class="text-gradient" data-bind="nome">Vinícius</span></h1>
+      <p class="tagline" data-bind="tagline">Construo agentes de IA com RAG, back-end em .NET e front-end moderno.</p>
+
+      <div class="hero-cta">
+        <a href="#projetos" class="btn btn-primary">Ver projetos →</a>
+        <a href="#contato" class="btn btn-ghost">Entrar em contato</a>
+        <a href="#" class="btn btn-ghost" data-link="cv" target="_blank" rel="noopener">Baixar CV</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num text-gradient">Level33</div>
+          <div class="lbl">Empresa</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num text-gradient">Full-Stack</div>
+          <div class="lbl">.NET + Next.js</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num text-gradient">IA · RAG</div>
+          <div class="lbl">Especialidade</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== SOBRE + SKILLS ===================== -->
+  <section class="section" id="sobre">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Sobre</span>
+        <h2 class="section-title">Quem está por trás do código</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal" data-bind="sobre">
+          <p>Carregando…</p>
+        </div>
+        <div class="skills-stack reveal" data-bind="skills"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIÊNCIA ===================== -->
+  <section class="section" id="experiencia">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Trajetória</span>
+        <h2 class="section-title">Experiência & Formação</h2>
+      </div>
+      <div class="timeline" data-bind="timeline"></div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJETOS ===================== -->
+  <section class="section" id="projetos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Portfólio</span>
+        <h2 class="section-title">Projetos selecionados</h2>
+        <p class="section-sub">Da família de agentes de IA para o setor público a aplicações web full-stack e modelagem de dados.</p>
+      </div>
+
+      <div class="filters" data-bind="filters"></div>
+      <div class="grid" data-bind="projects"></div>
+    </div>
+  </section>
+
+  <!-- ===================== FOCO: AGENTES DE IA ===================== -->
+  <section class="section ia-focus" id="ia">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Diferencial</span>
+        <h2 class="section-title">Como construo agentes de IA com RAG</h2>
+        <p class="section-sub">O processo que aplico nos agentes dos sistemas DFLegal e VisaDF: do dado bruto à resposta fundamentada em linguagem natural.</p>
+      </div>
+
+      <div class="ia-flow">
+        <div class="ia-step reveal">
+          <span class="ia-num">01</span>
+          <h4>Ingestão & Embeddings</h4>
+          <p>Extraio legislação, schema do banco e dados operacionais, e os transformo em vetores armazenados no pgvector.</p>
+        </div>
+        <div class="ia-step reveal">
+          <span class="ia-num">02</span>
+          <h4>Recuperação Semântica</h4>
+          <p>Busca por similaridade com threshold calibrado, recuperando apenas o contexto relevante para cada pergunta.</p>
+        </div>
+        <div class="ia-step reveal">
+          <span class="ia-num">03</span>
+          <h4>Text-to-SQL & Geração</h4>
+          <p>O LLM gera consultas SQL com joins corretos e respostas fundamentadas, combinando RAG e dados ao vivo.</p>
+        </div>
+        <div class="ia-step reveal">
+          <span class="ia-num">04</span>
+          <h4>Feedback & Observabilidade</h4>
+          <p>Conversas persistidas, feedback que vira memória e telemetria de custo, tokens e latência por chamada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTATO ===================== -->
+  <section class="section contact" id="contato">
+    <div class="wrap">
+      <span class="eyebrow" style="justify-content:center">Contato</span>
+      <h2 class="section-title">Vamos construir algo juntos</h2>
+      <p class="contact-sub">Aberto a oportunidades, colaborações e conversas sobre IA, back-end e desenvolvimento web.</p>
+      <div class="contact-links">
+        <a href="#" class="btn btn-primary" data-link="email">✉️ Enviar e-mail</a>
+        <a href="#" class="btn btn-ghost" data-link="github" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" class="btn btn-ghost" data-link="linkedin" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wrap">
+      <p>© <span data-bind="ano">2026</span> <span data-bind="nome">Vinícius Eloi Corrêa</span> · Construído com HTML, CSS e JavaScript · Publicado via GitHub Pages</p>
+    </div>
+  </footer>
+
+</body>
+</html>

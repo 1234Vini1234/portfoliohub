@@ -1,0 +1,26 @@
+[
+  {
+    "grupo": "Linguagens",
+    "itens": ["C#", "Python", "TypeScript", "JavaScript", "SQL", "HTML5", "CSS3"]
+  },
+  {
+    "grupo": "Back-end",
+    "itens": [".NET 8", "ASP.NET Core", "FastAPI", "APIs REST"]
+  },
+  {
+    "grupo": "Front-end",
+    "itens": ["Next.js", "React", "Tailwind CSS", "ECharts"]
+  },
+  {
+    "grupo": "IA & Dados",
+    "itens": ["RAG", "Embeddings", "pgvector", "Ollama", "Text-to-SQL", "LLMs (DeepSeek, Gemini)"]
+  },
+  {
+    "grupo": "Banco de Dados",
+    "itens": ["PostgreSQL", "SQL Server", "MySQL", "Modelagem Relacional"]
+  },
+  {
+    "grupo": "DevOps & Infra",
+    "itens": ["Docker", "Docker Swarm", "CI/CD", "Git", "GitHub Pages", "Linux"]
+  }
+]

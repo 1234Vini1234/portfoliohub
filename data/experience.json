@@ -1,0 +1,23 @@
+[
+  {
+    "periodo": "Atual",
+    "titulo": "Desenvolvedor Full-Stack",
+    "organizacao": "Level33",
+    "descricao": "Desenvolvimento de sistemas web e agentes de IA para clientes da saúde, vigilância sanitária, transporte público e setor jurídico. Atuação de ponta a ponta: back-end em .NET, front-end em Next.js, modelagem de dados e agentes de IA com RAG, pipelines de embeddings, Text-to-SQL, observabilidade de custo/latência e deploy via Docker e CI/CD.",
+    "tags": [".NET", "Next.js", "Python", "RAG", "pgvector", "Docker"]
+  },
+  {
+    "periodo": "Projetos",
+    "titulo": "Sistemas para saúde, transporte e setor público",
+    "organizacao": "Level33",
+    "descricao": "Entre as entregas: ProntoBook (sistema hospitalar), SEMOB (rede de transporte público), DFLegal (vistorias em estabelecimentos do DF) e VisaDF (vigilância sanitária do DF), além de agentes de IA que respondem perguntas sobre legislação e dados operacionais em linguagem natural.",
+    "tags": ["Sistemas Web", "Saúde", "Transporte", "Setor Público"]
+  },
+  {
+    "periodo": "Formação",
+    "titulo": "Engenharia de Software",
+    "organizacao": "Graduação",
+    "descricao": "Estudante de Engenharia de Software, com foco em arquitetura de aplicações, bancos de dados e integração de sistemas de IA.",
+    "tags": ["Arquitetura", "Bancos de Dados", "Algoritmos"]
+  }
+]

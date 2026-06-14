@@ -1,0 +1,122 @@
+[
+  {
+    "nome": "ProntoBook",
+    "categoria": "web",
+    "destaque": true,
+    "empresa": "Level33",
+    "resumo": "Sistema hospitalar para gestão do atendimento — do prontuário ao fluxo de pacientes — desenvolvido para o setor de saúde.",
+    "descricao": "Sistema web full-stack para um hospital, cobrindo o fluxo de atendimento e a gestão de informações clínicas e administrativas. Atuei no desenvolvimento de funcionalidades de ponta a ponta, com back-end em .NET, front-end em Next.js e banco relacional, sempre com atenção à confiabilidade e à integridade dos dados em um contexto de saúde.",
+    "destaques": [
+      "Gestão de atendimento e informações de pacientes",
+      "Arquitetura full-stack .NET + Next.js",
+      "Foco em confiabilidade e integridade de dados clínicos"
+    ],
+    "stack": [".NET", "Next.js", "SQL Server"],
+    "tipo": "Profissional · Saúde",
+    "confidencial": true,
+    "links": {}
+  },
+  {
+    "nome": "SEMOB",
+    "categoria": "web",
+    "destaque": true,
+    "empresa": "Level33",
+    "resumo": "Sistema para uma rede de transporte público, apoiando a gestão e o acompanhamento de operações da mobilidade urbana.",
+    "descricao": "Sistema web voltado a uma rede de transporte público (mobilidade urbana), com módulos de gestão e acompanhamento operacional. Contribuí no desenvolvimento full-stack, integrando regras de negócio do domínio de transporte a uma interface web moderna.",
+    "destaques": [
+      "Gestão e acompanhamento de operações de transporte",
+      "Regras de negócio do domínio de mobilidade urbana",
+      "Desenvolvimento full-stack web"
+    ],
+    "stack": [".NET", "Next.js", "PostgreSQL"],
+    "tipo": "Profissional · Transporte Público",
+    "confidencial": true,
+    "links": {}
+  },
+  {
+    "nome": "DFLegal",
+    "categoria": "web",
+    "destaque": true,
+    "empresa": "Level33",
+    "resumo": "Sistema de fiscalização que apoia as vistorias em estabelecimentos do DF, com um agente de IA para consultar legislação.",
+    "descricao": "Plataforma para gestão das vistorias/fiscalizações realizadas em estabelecimentos do Distrito Federal: registro de inspeções, acompanhamento de processos e dados operacionais. Sobre essa base, desenvolvi também o DFLegalAgente — um agente de IA com RAG que responde perguntas sobre legislação e processos em linguagem natural, com roteamento por dataset (legislação, schema de dados e base operacional).",
+    "destaques": [
+      "Registro e acompanhamento de vistorias em estabelecimentos",
+      "Agente de IA (RAG) sobre legislação e processos",
+      "Roteamento de perguntas por dataset + Text-to-SQL"
+    ],
+    "stack": [".NET", "Next.js", "Python", "pgvector"],
+    "tipo": "Profissional · Setor Público (DF)",
+    "confidencial": true,
+    "links": {}
+  },
+  {
+    "nome": "VisaDF",
+    "categoria": "web",
+    "destaque": true,
+    "empresa": "Level33",
+    "resumo": "Sistema da vigilância sanitária do DF, com um agente de IA que responde sobre legislação e dados de inspeção.",
+    "descricao": "Sistema voltado à vigilância sanitária do Distrito Federal, apoiando o trabalho de inspeção e o acompanhamento de processos. Desenvolvi a camada de agente de IA (VisaAgente): RAG sobre legislação e documentos técnicos, persistência de conversas, feedback que vira memória e um dashboard analítico com telemetria de custo, tokens e latência do agente.",
+    "destaques": [
+      "Apoio à inspeção e acompanhamento de processos sanitários",
+      "Agente de IA (RAG) sobre legislação e base operacional",
+      "Dashboard analítico + monitor de custo/latência da IA"
+    ],
+    "stack": [".NET", "Next.js", "Python", "pgvector", "ECharts"],
+    "tipo": "Profissional · Setor Público (DF)",
+    "confidencial": true,
+    "links": {}
+  },
+  {
+    "nome": "Agentes de IA com RAG",
+    "categoria": "ia",
+    "destaque": true,
+    "empresa": "Level33",
+    "resumo": "Família de agentes de IA conversacionais que respondem perguntas sobre legislação e dados operacionais em linguagem natural.",
+    "descricao": "Linha de agentes de IA construídos para os sistemas do setor público (vigilância sanitária e fiscalização). O processo que aplico: ingestão e vetorização de bases (legislação, schema do banco, dados operacionais) no pgvector; recuperação semântica com threshold calibrado; geração de Text-to-SQL com joins corretos; persistência de conversas; feedback do usuário convertido em memória; e observabilidade completa (custo, tokens, latência por etapa do pipeline).",
+    "destaques": [
+      "Pipeline de RAG sobre legislação + schema + base operacional",
+      "Text-to-SQL com relacionamentos inferidos entre tabelas",
+      "Migração de embeddings (768 → 1536 dims) in-place, sem perda",
+      "Telemetria de custo/tokens/latência com query profiler"
+    ],
+    "stack": ["Python", "FastAPI", "pgvector", "Ollama", "LLMs", "Docker"],
+    "tipo": "Profissional · Setor Público",
+    "confidencial": true,
+    "links": {}
+  },
+  {
+    "nome": "Bolão da Copa 2026",
+    "categoria": "web",
+    "destaque": false,
+    "empresa": "",
+    "resumo": "Aplicação web de bolão da Copa do Mundo 2026 entre amigos, com autenticação, palpites e ranking.",
+    "descricao": "Projeto pessoal full-stack: site de bolão para a Copa 2026, com cadastro/login, registro de palpites e ranking entre participantes. Identidade visual com clima de Copa — arte oficial ao fundo, paleta verde-amarela e tipografia display.",
+    "destaques": [
+      "Autenticação e gestão de usuários",
+      "Registro de palpites e ranking",
+      "Persistência com Prisma + Supabase"
+    ],
+    "stack": ["Next.js 15", "Tailwind CSS 4", "Prisma", "Supabase"],
+    "tipo": "Projeto Pessoal",
+    "confidencial": false,
+    "links": {}
+  },
+  {
+    "nome": "PawsCare Petshop",
+    "categoria": "dados",
+    "destaque": false,
+    "empresa": "",
+    "resumo": "Banco de dados para gestão de petshop, com modelagem relacional de clientes, animais, serviços e agendamentos.",
+    "descricao": "Projeto de modelagem de dados: esquema relacional completo para um petshop, cobrindo clientes, animais, serviços, agendamentos e histórico de atendimentos, com normalização e integridade referencial.",
+    "destaques": [
+      "Modelagem relacional normalizada",
+      "Clientes, animais, serviços e agendamentos",
+      "Integridade referencial e consultas SQL"
+    ],
+    "stack": ["MySQL", "Modelagem de Dados"],
+    "tipo": "Projeto Acadêmico",
+    "confidencial": false,
+    "links": {}
+  }
+]

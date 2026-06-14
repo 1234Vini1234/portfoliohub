@@ -1,0 +1,40 @@
+/* ============================================
+   Design Tokens — variáveis globais
+   Edite as cores aqui para retematizar o site.
+   ============================================ */
+:root {
+  /* Cores base (tema dark corporativo, azul-marinho) */
+  --bg: #0a0f1a;
+  --bg-soft: #0d1424;
+  --surface: #111a2e;
+  --surface-2: #16213a;
+  --border: #243049;
+  --border-soft: #1a2336;
+
+  /* Texto */
+  --text: #eef2f8;
+  --text-soft: #c5cfe0;
+  --muted: #8896ad;
+
+  /* Acentos / marca (azul + teal, sóbrio) */
+  --accent: #3b82f6;
+  --accent-2: #2dd4bf;
+  --accent-3: #38bdf8;
+  --gradient: linear-gradient(90deg, var(--accent), var(--accent-2));
+  --gradient-soft: linear-gradient(135deg, rgba(59, 130, 246, .12), rgba(45, 212, 191, .1));
+
+  /* Tipografia */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", "JetBrains Mono", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Layout */
+  --wrap: 1080px;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, .4);
+  --shadow-glow: 0 0 0 1px var(--border), 0 12px 40px rgba(59, 130, 246, .2);
+
+  /* Transições */
+  --t: .2s ease;
+  --t-slow: .45s cubic-bezier(.16, 1, .3, 1);
+}
