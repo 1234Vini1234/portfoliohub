@@ -3,36 +3,38 @@
    Edite as cores aqui para retematizar o site.
    ============================================ */
 :root {
-  /* Cores base (tema dark corporativo, azul-marinho) */
-  --bg: #0a0f1a;
-  --bg-soft: #0d1424;
-  --surface: #111a2e;
-  --surface-2: #16213a;
-  --border: #243049;
-  --border-soft: #1a2336;
+  /* Cores base (tema dark, preto + laranja) */
+  --bg: #0a0a0a;
+  --bg-soft: #0f0f10;
+  --surface: #151516;
+  --surface-2: #1d1d1f;
+  --border: #2a2a2d;
+  --border-soft: #1f1f21;
 
   /* Texto */
-  --text: #eef2f8;
-  --text-soft: #c5cfe0;
-  --muted: #8896ad;
+  --text: #f5f5f4;
+  --text-soft: #d6d3d1;
+  --muted: #8a8a87;
 
-  /* Acentos / marca (azul + teal, sóbrio) */
-  --accent: #3b82f6;
-  --accent-2: #2dd4bf;
-  --accent-3: #38bdf8;
+  /* Acentos / marca (laranja em destaque) */
+  --accent: #ff6b1a;
+  --accent-2: #ff9447;
+  --accent-3: #ffb066;
   --gradient: linear-gradient(90deg, var(--accent), var(--accent-2));
-  --gradient-soft: linear-gradient(135deg, rgba(59, 130, 246, .12), rgba(45, 212, 191, .1));
+  --gradient-soft: linear-gradient(135deg, rgba(255, 107, 26, .12), rgba(255, 148, 71, .08));
 
   /* Tipografia */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
   --font-mono: "SFMono-Regular", "JetBrains Mono", Consolas, "Liberation Mono", Menlo, monospace;
 
-  /* Layout */
+  /* Layout (raios contidos = ar mais sério, menos arredondado) */
   --wrap: 1080px;
-  --radius: 14px;
-  --radius-sm: 8px;
-  --shadow: 0 8px 30px rgba(0, 0, 0, .4);
-  --shadow-glow: 0 0 0 1px var(--border), 0 12px 40px rgba(59, 130, 246, .2);
+  --radius: 6px;
+  --radius-sm: 4px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, .5);
+  --shadow-glow: 0 0 0 1px var(--border), 0 12px 40px rgba(255, 107, 26, .18);
 
   /* Transições */
   --t: .2s ease;
