@@ -3,6 +3,7 @@
    e injeta o conteúdo no DOM.
    ============================================ */
 import { iconHTML } from "./icons.js";
+import { field, t } from "./i18n.js";
 
 /** Escapa texto para evitar HTML indevido vindo do JSON. */
 function esc(str = "") {
@@ -18,25 +19,21 @@ async function loadJSON(path) {
   return res.json();
 }
 
-const CATEGORIAS = {
-  todos: "Todos",
-  ia: "Agentes de IA",
-  web: "Aplicações Web",
-  dados: "Bancos de Dados",
-};
+// Categorias de projeto; os rótulos vêm do i18n (filter.<chave>)
+const CATEGORIAS = ["todos", "ia", "web", "dados"];
 
 /* ---------- PERFIL / HERO / CONTATO ---------- */
 function renderProfile(p) {
   document.title = `${p.nome} — Portfólio`;
 
   setText("[data-bind='nome']", p.nome);
-  setText("[data-bind='titulo']", p.titulo);
-  setText("[data-bind='tagline']", p.tagline);
+  setText("[data-bind='titulo']", field(p, "titulo"));
+  setText("[data-bind='tagline']", field(p, "tagline"));
   setText("[data-bind='brand']", p.nome.split(" ")[0]);
 
-  // Bio curta no Hero (usa bio_curta do JSON; se ausente, mantém o texto fixo do HTML)
+  // Bio curta no Hero (usa bio_curta do JSON; respeita o idioma ativo)
   const bioEl = document.querySelector("[data-bind='sobre-curto']");
-  if (bioEl && p.bio_curta) bioEl.textContent = p.bio_curta;
+  if (bioEl && p.bio_curta) bioEl.textContent = field(p, "bio_curta");
 
   // Foto de perfil (Hero)
   const fotoEl = document.querySelector("[data-bind='foto']");
@@ -95,12 +92,12 @@ function renderExperience(items) {
     .map(
       (e) => `
       <div class="tl-item reveal">
-        <p class="tl-period">${esc(e.periodo)}</p>
-        <h3 class="tl-title">${esc(e.titulo)}</h3>
-        <p class="tl-org">${esc(e.organizacao)}</p>
-        <p class="tl-desc">${esc(e.descricao)}</p>
+        <p class="tl-period">${esc(field(e, "periodo"))}</p>
+        <h3 class="tl-title">${esc(field(e, "titulo"))}</h3>
+        <p class="tl-org">${esc(field(e, "organizacao"))}</p>
+        <p class="tl-desc">${esc(field(e, "descricao"))}</p>
         <div class="tl-tags">
-          ${e.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}
+          ${e.tags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join("")}
         </div>
       </div>`
     )
@@ -110,9 +107,9 @@ function renderExperience(items) {
 /* ---------- PROJETOS ---------- */
 function projectCard(proj) {
   const featured = proj.destaque ? "featured" : "";
-  const kindLabel = CATEGORIAS[proj.categoria] || proj.categoria;
+  const kindLabel = t(`filter.${proj.categoria}`);
 
-  const highlights = (proj.destaques || [])
+  const highlights = (field(proj, "destaques") || [])
     .map((h) => `<li>${esc(h)}</li>`)
     .join("");
 
@@ -123,7 +120,7 @@ function projectCard(proj) {
   const extra = stack.length - shown.length;
   const tags =
     shown
-      .map((t) => `<span class="tag">${iconHTML(t)}<span>${esc(t)}</span></span>`)
+      .map((tech) => `<span class="tag">${iconHTML(tech)}<span>${esc(tech)}</span></span>`)
       .join("") +
     (extra > 0 ? `<span class="tag tag--more">+${extra}</span>` : "");
 
@@ -138,26 +135,26 @@ function projectCard(proj) {
       )
       .join("");
   } else if (proj.confidencial) {
-    linksHtml = `<span class="muted-link card-lock">🔒 Sistema interno · sob sigilo</span>`;
+    linksHtml = `<span class="muted-link card-lock">${t("card.sigilo")}</span>`;
   } else {
-    linksHtml = `<span class="muted-link">Em breve</span>`;
+    linksHtml = `<span class="muted-link">${t("card.breve")}</span>`;
   }
 
   // Projetos de IA ganham mais peso visual (card maior, selo dedicado)
   const iaClass = proj.ia ? "card--ia" : "";
   const kindBadge = proj.ia
-    ? '<span class="card-kind card-kind--ia">✦ Agente de IA</span>'
-    : `<span class="card-kind ${featured}">${featured ? "★ Destaque" : esc(kindLabel)}</span>`;
+    ? `<span class="card-kind card-kind--ia">${t("card.ia")}</span>`
+    : `<span class="card-kind ${featured}">${featured ? t("card.featured") : esc(kindLabel)}</span>`;
 
   return `
     <article class="card reveal ${iaClass}" data-cat="${esc(proj.categoria)}">
       <div class="card-top">
         ${kindBadge}
-        ${proj.confidencial ? '<span class="card-lock">🔒 Confidencial</span>' : ""}
+        ${proj.confidencial ? `<span class="card-lock">${t("card.confidencial")}</span>` : ""}
       </div>
-      <h3>${esc(proj.nome)}</h3>
+      <h3>${esc(field(proj, "nome"))}</h3>
       ${proj.empresa ? `<span class="card-company">@ ${esc(proj.empresa)}</span>` : ""}
-      <p class="card-resumo">${esc(proj.resumo)}</p>
+      <p class="card-resumo">${esc(field(proj, "resumo"))}</p>
       ${highlights ? `<ul class="card-highlights">${highlights}</ul>` : ""}
       <div class="tags">${tags}</div>
       <div class="card-links">${linksHtml}</div>
@@ -176,12 +173,12 @@ function renderProjects(projects) {
   const present = new Set(projects.map((p) => p.categoria));
   const filterRoot = document.querySelector("[data-bind='filters']");
   if (filterRoot) {
-    const cats = ["todos", ...Object.keys(CATEGORIAS).filter((c) => c !== "todos" && present.has(c))];
+    const cats = ["todos", ...CATEGORIAS.filter((c) => c !== "todos" && present.has(c))];
     filterRoot.innerHTML = cats
       .map(
         (c, i) =>
           `<button class="filter-btn ${i === 0 ? "active" : ""}" data-filter="${c}">${esc(
-            CATEGORIAS[c]
+            t(`filter.${c}`)
           )}</button>`
       )
       .join("");

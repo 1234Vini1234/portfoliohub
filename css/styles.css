@@ -77,7 +77,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(10, 10, 10, .72);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid transparent;
   transition: var(--t);
@@ -85,7 +85,7 @@
 
 .nav.scrolled {
   border-bottom-color: var(--border-soft);
-  background: rgba(10, 10, 10, .92);
+  background: var(--nav-bg-scrolled);
 }
 
 .nav-inner {
@@ -94,7 +94,12 @@
   padding: 14px 24px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Links empurrados para a direita; ações logo em seguida */
+.nav-links {
+  margin-left: auto;
 }
 
 .nav-brand {
@@ -126,6 +131,88 @@
 .nav-toggle {
   display: none;
   font-size: 22px;
+  order: 3;
+}
+
+/* Ações do nav (idioma + tema) */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(255, 107, 26, .08);
+  border: 1px solid rgba(255, 107, 26, .35);
+  border-radius: var(--radius-sm);
+  padding: 7px 12px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--t), border-color var(--t), color var(--t),
+    transform var(--t), box-shadow var(--t);
+}
+
+.nav-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 107, 26, .35);
+}
+
+.nav-btn:active {
+  transform: translateY(0) scale(.96);
+}
+
+.lang-flag {
+  font-size: 15px;
+  display: inline-block;
+  transition: transform var(--t-slow);
+}
+
+/* Flip da bandeira ao trocar idioma (classe adicionada por JS) */
+.lang-toggle.flipping .lang-flag {
+  transform: rotateY(360deg);
+}
+
+.lang-code {
+  letter-spacing: .5px;
+}
+
+/* Botão de tema: ícone gira ao alternar */
+.theme-toggle {
+  font-size: 15px;
+}
+
+.theme-toggle .theme-ico-dark,
+.theme-toggle .theme-ico-light {
+  display: inline-block;
+  transition: transform var(--t-slow);
+}
+
+.theme-toggle.spinning .theme-ico-dark,
+.theme-toggle.spinning .theme-ico-light {
+  transform: rotate(360deg) scale(1.2);
+}
+
+/* Mostra só o ícone do tema OPOSTO ao atual */
+.theme-toggle .theme-ico-light {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-toggle .theme-ico-dark {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-toggle .theme-ico-light {
+  display: inline-block;
 }
 
 /* ---------- HERO ---------- */
@@ -178,13 +265,36 @@
   max-width: 540px;
 }
 
-/* Foto do Hero (retrato com moldura de acento) */
+/* Foto do Hero — perspectiva para o tilt 3D (variáveis vêm do JS) */
 .hero-photo {
   position: relative;
   justify-self: center;
+  perspective: 900px;
+  --rx: 0deg; /* rotação X (controlada pelo mouse) */
+  --ry: 0deg; /* rotação Y */
+  --mx: 50%;  /* posição do brilho */
+  --my: 50%;
+}
+
+/* Wrapper que flutua + inclina em 3D */
+.hero-photo-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  /* Entrada ao carregar + flutuar contínuo depois */
+  animation: photoIn 1s cubic-bezier(.16, 1, .3, 1) both,
+    photoFloat 6s ease-in-out 1s infinite;
+  will-change: transform;
+}
+
+/* No hover, o tilt do mouse assume (pausa o flutuar) */
+.hero-photo:hover .hero-photo-inner {
+  animation-play-state: running, paused;
+  transform: rotateX(var(--rx)) rotateY(var(--ry)) scale(1.02);
+  transition: transform .15s ease-out;
 }
 
 .hero-photo img {
+  display: block;
   width: 100%;
   max-width: 360px;
   aspect-ratio: 4 / 5;
@@ -192,10 +302,39 @@
   object-position: center 22%;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  filter: grayscale(.18) contrast(1.02);
-  transition: filter var(--t-slow), transform var(--t-slow);
+  filter: grayscale(.2) contrast(1.02);
+  transition: filter var(--t-slow);
+  /* glow laranja que "respira" */
+  box-shadow: 0 0 0 0 rgba(255, 107, 26, .0);
+  animation: photoGlow 5s ease-in-out 1.2s infinite;
 }
 
+.hero-photo:hover img {
+  filter: grayscale(0) contrast(1.05);
+}
+
+/* Brilho diagonal que segue o mouse (camada por cima) */
+.hero-photo-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: radial-gradient(
+    340px circle at var(--mx) var(--my),
+    rgba(255, 255, 255, .18),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity var(--t-slow);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-photo:hover .hero-photo-inner::before {
+  opacity: 1;
+}
+
+/* Moldura de acento deslocada (profundidade) */
 .hero-photo::after {
   content: "";
   position: absolute;
@@ -207,14 +346,30 @@
   transition: var(--t-slow);
 }
 
-.hero-photo:hover img {
-  filter: grayscale(0) contrast(1);
-  transform: translate(2px, -2px);
-}
-
 .hero-photo:hover::after {
   inset: 12px -18px -18px 12px;
-  opacity: .8;
+  opacity: .85;
+}
+
+@keyframes photoIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes photoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes photoGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 26, 0), var(--shadow); }
+  50% { box-shadow: 0 0 36px -4px rgba(255, 107, 26, .35), var(--shadow); }
 }
 
 .hero .badge {

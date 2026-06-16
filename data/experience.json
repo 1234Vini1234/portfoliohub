@@ -1,23 +1,33 @@
 [
   {
     "periodo": "Atual",
+    "periodo_en": "Current",
     "titulo": "Desenvolvedor Full-Stack",
+    "titulo_en": "Full-Stack Developer",
     "organizacao": "Level33",
     "descricao": "Desenvolvimento de sistemas web e agentes de IA para clientes da saúde, vigilância sanitária, transporte público e setor jurídico. Atuação de ponta a ponta: back-end em .NET, front-end em Next.js, modelagem de dados e agentes de IA com RAG, pipelines de embeddings, Text-to-SQL, observabilidade de custo/latência e deploy via Docker e CI/CD.",
+    "descricao_en": "Development of web systems and AI agents for clients in healthcare, health surveillance, public transportation and the legal sector. End-to-end work: .NET back-end, Next.js front-end, data modeling and AI agents with RAG, embedding pipelines, Text-to-SQL, cost/latency observability and deployment via Docker and CI/CD.",
     "tags": [".NET", "Next.js", "Python", "RAG", "pgvector", "Docker"]
   },
   {
     "periodo": "Projetos",
+    "periodo_en": "Projects",
     "titulo": "Sistemas para saúde, transporte e setor público",
+    "titulo_en": "Systems for healthcare, transportation and the public sector",
     "organizacao": "Level33",
     "descricao": "Entre as entregas: ProntoBook (sistema hospitalar), SEMOB (rede de transporte público), DFLegal (vistorias em estabelecimentos do DF) e VisaDF (vigilância sanitária do DF), além de agentes de IA que respondem perguntas sobre legislação e dados operacionais em linguagem natural.",
+    "descricao_en": "Among the deliverables: ProntoBook (hospital system), SEMOB (public transportation network), DFLegal (inspections of establishments in the Federal District) and VisaDF (health surveillance of the Federal District), as well as AI agents that answer questions about legislation and operational data in natural language.",
     "tags": ["Sistemas Web", "Saúde", "Transporte", "Setor Público"]
   },
   {
     "periodo": "Formação",
+    "periodo_en": "Education",
     "titulo": "Engenharia de Software",
+    "titulo_en": "Software Engineering",
     "organizacao": "Graduação",
+    "organizacao_en": "Undergraduate degree",
     "descricao": "Estudante de Engenharia de Software, com foco em arquitetura de aplicações, bancos de dados e integração de sistemas de IA.",
+    "descricao_en": "Software Engineering student, focused on application architecture, databases and AI systems integration.",
     "tags": ["Arquitetura", "Bancos de Dados", "Algoritmos"]
   }
 ]
