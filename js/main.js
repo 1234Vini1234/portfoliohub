@@ -4,6 +4,8 @@
    ============================================ */
 import { hydrate } from "./render.js";
 import { loadGitHub } from "./github.js";
+import { initI18n, applyUI, toggleLang } from "./i18n.js";
+import { toggleTheme } from "./theme.js";
 
 /* ---------- Intro / boas-vindas (typewriter + saída lateral) ---------- */
 function initIntro() {
@@ -146,6 +148,36 @@ function initIntro() {
   setTimeout(tick, 750); // começa depois do "Welcome" aparecer
 }
 
+/* ---------- Tilt 3D da foto do Hero (segue o mouse) ---------- */
+function initPhotoTilt() {
+  const wrap = document.querySelector(".hero-photo");
+  if (!wrap) return;
+
+  // Só em dispositivos com mouse (evita em touch) e sem "reduzir movimento"
+  const finePointer = window.matchMedia("(pointer: fine)").matches;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!finePointer || reduce) return;
+
+  const MAX = 9; // graus máximos de inclinação
+
+  wrap.addEventListener("mousemove", (e) => {
+    const r = wrap.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width; // 0..1
+    const py = (e.clientY - r.top) / r.height; // 0..1
+    // Inclina na direção do cursor; brilho acompanha
+    wrap.style.setProperty("--ry", `${(px - 0.5) * 2 * MAX}deg`);
+    wrap.style.setProperty("--rx", `${(0.5 - py) * 2 * MAX}deg`);
+    wrap.style.setProperty("--mx", `${px * 100}%`);
+    wrap.style.setProperty("--my", `${py * 100}%`);
+  });
+
+  // Ao sair, volta suave ao neutro
+  wrap.addEventListener("mouseleave", () => {
+    wrap.style.setProperty("--ry", "0deg");
+    wrap.style.setProperty("--rx", "0deg");
+  });
+}
+
 /* ---------- Navbar: sombra ao rolar ---------- */
 function initNavbar() {
   const nav = document.querySelector(".nav");
@@ -217,20 +249,52 @@ function initYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
+/* ---------- Toggles de idioma e tema ---------- */
+function initToggles() {
+  const langBtn = document.querySelector(".lang-toggle");
+  const themeBtn = document.querySelector(".theme-toggle");
+
+  langBtn?.addEventListener("click", () => {
+    toggleLang();
+    // micro-animação: flip da bandeira
+    langBtn.classList.add("flipping");
+    setTimeout(() => langBtn.classList.remove("flipping"), 450);
+  });
+
+  themeBtn?.addEventListener("click", () => {
+    toggleTheme();
+    // micro-animação: gira o ícone sol/lua
+    themeBtn.classList.add("spinning");
+    setTimeout(() => themeBtn.classList.remove("spinning"), 450);
+  });
+}
+
 /* ---------- bootstrap ---------- */
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   initIntro();
   initNavbar();
   initMobileMenu();
+  initToggles();
+  initPhotoTilt();
   initYear();
-  hydrate(); // carrega os JSON e injeta o conteúdo
+
+  // Idioma precisa estar pronto ANTES de renderizar o conteúdo
+  await initI18n();
+  applyUI();
+  hydrate(); // carrega os JSON e injeta o conteúdo no idioma ativo
 });
 
 // Quando o conteúdo dinâmico estiver pronto, liga filtros + reveal + GitHub
+let ghUser = null;
 document.addEventListener("content:ready", (e) => {
   initFilters();
   initReveal();
 
-  const user = e.detail?.github_user;
-  if (user) loadGitHub(user);
+  ghUser = e.detail?.github_user || ghUser;
+  if (ghUser) loadGitHub(ghUser);
+});
+
+// Trocar de idioma: re-renderiza o conteúdo dinâmico (cards, timeline, etc.)
+document.addEventListener("lang:changed", () => {
+  hydrate(); // re-injeta tudo no novo idioma; dispara content:ready de novo
 });

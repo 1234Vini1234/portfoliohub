@@ -6,6 +6,8 @@
    novo aparece automaticamente na próxima visita.
    ============================================ */
 
+import { t } from "./i18n.js";
+
 const API = "https://api.github.com";
 
 /** Escapa texto vindo da API antes de injetar no DOM. */
@@ -69,9 +71,9 @@ function renderProfile(user) {
   const stats = document.querySelector("[data-bind='gh-stats']");
   if (stats) {
     const items = [
-      { num: numFmt(user.public_repos), lbl: "Repositórios" },
-      { num: numFmt(user.followers), lbl: "Seguidores" },
-      { num: numFmt(user.following), lbl: "Seguindo" },
+      { num: numFmt(user.public_repos), lbl: t("gh.stat.repos") },
+      { num: numFmt(user.followers), lbl: t("gh.stat.followers") },
+      { num: numFmt(user.following), lbl: t("gh.stat.following") },
     ];
     stats.innerHTML = items
       .map(
@@ -93,7 +95,7 @@ function renderRepos(repos) {
     .slice(0, 4);
 
   if (!list.length) {
-    box.innerHTML = `<p class="gh-error">Nenhum repositório público encontrado.</p>`;
+    box.innerHTML = `<p class="gh-error">${t("gh.empty.repos")}</p>`;
     return;
   }
 
@@ -102,7 +104,7 @@ function renderRepos(repos) {
       (r) => `
       <a class="gh-repo" href="${esc(r.html_url)}" target="_blank" rel="noopener">
         <span class="gh-repo-name">${esc(r.name)}</span>
-        <p class="gh-repo-desc">${esc(r.description || "Sem descrição.")}</p>
+        <p class="gh-repo-desc">${esc(r.description || t("gh.repo.nodesc"))}</p>
         <div class="gh-repo-foot">
           ${r.language ? `<span class="gh-lang">${esc(r.language)}</span>` : ""}
           ${r.stargazers_count ? `<span>★ ${numFmt(r.stargazers_count)}</span>` : ""}
@@ -155,7 +157,7 @@ function renderActivity(events) {
     .slice(0, 5);
 
   if (!relevant.length) {
-    box.innerHTML = `<li class="gh-error">Nenhuma atividade pública recente.</li>`;
+    box.innerHTML = `<li class="gh-error">${t("gh.empty.activity")}</li>`;
     return;
   }
 
@@ -209,11 +211,11 @@ export async function loadGitHub(username) {
   } catch (err) {
     console.error("[GitHub]", err);
     if (err.status === 403) {
-      showError("Limite de requisições do GitHub atingido. Tente novamente em alguns minutos.");
+      showError(t("gh.error.rate"));
     } else if (err.status === 404) {
-      showError(`Usuário "${username}" não encontrado no GitHub. Verifique o campo github_user.`);
+      showError(t("gh.error.notfound"));
     } else {
-      showError("Não foi possível carregar os dados do GitHub agora.");
+      showError(t("gh.error.generic"));
     }
   }
 }

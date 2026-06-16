@@ -20,6 +20,21 @@
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/styles.css" />
 
+  <!-- Aplica tema e idioma salvos ANTES de pintar (evita flash) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (!t) {
+          t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+        var l = localStorage.getItem("lang") || "pt";
+        document.documentElement.setAttribute("lang", l === "en" ? "en" : "pt-BR");
+      } catch (e) {}
+    })();
+  </script>
+
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
@@ -32,7 +47,7 @@
         <span class="intro-typed" aria-hidden="true"></span><span class="intro-caret" aria-hidden="true"></span>
       </h2>
       <span class="intro-name" data-bind="nome">Vinícius Eloi Corrêa</span>
-      <span class="intro-hint">clique, role ou pressione uma tecla para entrar</span>
+      <span class="intro-hint" data-i18n="intro.hint">clique, role ou pressione uma tecla para entrar</span>
     </div>
   </div>
 
@@ -42,12 +57,20 @@
       <a href="#topo" class="nav-brand"><span data-bind="brand">Portfolio</span><span class="dot">.</span></a>
       <button class="nav-toggle" aria-label="Abrir menu">☰</button>
       <ul class="nav-links">
-        <li><a href="#experiencia">Experiência</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#ia">Agentes de IA</a></li>
-        <li><a href="#github">GitHub</a></li>
-        <li><a href="#contato">Contato</a></li>
+        <li><a href="#experiencia" data-i18n="nav.experiencia">Experiência</a></li>
+        <li><a href="#projetos" data-i18n="nav.projetos">Projetos</a></li>
+        <li><a href="#ia" data-i18n="nav.ia">Agentes de IA</a></li>
+        <li><a href="#github" data-i18n="nav.github">GitHub</a></li>
+        <li><a href="#contato" data-i18n="nav.contato">Contato</a></li>
       </ul>
+      <div class="nav-actions">
+        <button class="nav-btn lang-toggle" type="button" aria-label="Mudar idioma" title="Português / English">
+          <span class="lang-flag">🇧🇷</span><span class="lang-code">PT</span>
+        </button>
+        <button class="nav-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro" title="Tema claro/escuro">
+          <span class="theme-ico-dark">🌙</span><span class="theme-ico-light">☀️</span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -55,8 +78,8 @@
   <header class="hero" id="topo">
     <div class="wrap hero-grid">
       <div class="hero-text">
-        <span class="badge"><span class="pulse"></span> Desenvolvedor na Level33</span>
-        <h1>Olá, sou <span class="text-gradient" data-bind="nome">Vinícius</span></h1>
+        <span class="badge"><span class="pulse"></span> <span data-i18n="hero.badge">Desenvolvedor na Level33</span></span>
+        <h1><span data-i18n="hero.ola">Olá, sou</span> <span class="text-gradient" data-bind="nome">Vinícius</span></h1>
         <p class="tagline" data-bind="tagline">Construo agentes de IA com RAG, back-end em .NET e front-end moderno.</p>
 
         <p class="hero-bio" data-bind="sobre-curto">
@@ -65,29 +88,31 @@
         </p>
 
         <div class="hero-cta">
-          <a href="#projetos" class="btn btn-primary">Ver projetos →</a>
-          <a href="#contato" class="btn btn-ghost">Entrar em contato</a>
-          <a href="#" class="btn btn-ghost" data-link="cv" target="_blank" rel="noopener">Baixar CV</a>
+          <a href="#projetos" class="btn btn-primary" data-i18n="hero.cta.projetos">Ver projetos →</a>
+          <a href="#contato" class="btn btn-ghost" data-i18n="hero.cta.contato">Entrar em contato</a>
+          <a href="#" class="btn btn-ghost" data-link="cv" data-i18n="hero.cta.cv" target="_blank" rel="noopener">Baixar CV</a>
         </div>
 
         <div class="hero-stats">
           <div class="hero-stat">
             <div class="num text-gradient">Level33</div>
-            <div class="lbl">Empresa</div>
+            <div class="lbl" data-i18n="hero.stat.empresa">Empresa</div>
           </div>
           <div class="hero-stat">
             <div class="num text-gradient">Full-Stack</div>
-            <div class="lbl">.NET + Next.js</div>
+            <div class="lbl" data-i18n="hero.stat.stack">.NET + Next.js</div>
           </div>
           <div class="hero-stat">
             <div class="num text-gradient">IA · RAG</div>
-            <div class="lbl">Especialidade</div>
+            <div class="lbl" data-i18n="hero.stat.especialidade">Especialidade</div>
           </div>
         </div>
       </div>
 
-      <div class="hero-photo reveal">
-        <img data-bind="foto" src="" alt="Foto de perfil" loading="eager" />
+      <div class="hero-photo">
+        <div class="hero-photo-inner">
+          <img data-bind="foto" src="" alt="Foto de perfil" loading="eager" />
+        </div>
       </div>
     </div>
   </header>
@@ -96,13 +121,13 @@
   <section class="section" id="experiencia">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Trajetória</span>
-        <h2 class="section-title">Experiência & Formação</h2>
+        <span class="eyebrow" data-i18n="exp.eyebrow">Trajetória</span>
+        <h2 class="section-title" data-i18n="exp.title">Experiência & Formação</h2>
       </div>
       <div class="timeline" data-bind="timeline"></div>
 
       <div class="skills-block">
-        <h3 class="skills-heading">Tecnologias & ferramentas</h3>
+        <h3 class="skills-heading" data-i18n="exp.skills">Tecnologias & ferramentas</h3>
         <div class="skills-stack reveal" data-bind="skills"></div>
       </div>
     </div>
@@ -112,9 +137,9 @@
   <section class="section" id="projetos">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Portfólio</span>
-        <h2 class="section-title">Projetos selecionados</h2>
-        <p class="section-sub">Da família de agentes de IA para o setor público a aplicações web full-stack e modelagem de dados.</p>
+        <span class="eyebrow" data-i18n="proj.eyebrow">Portfólio</span>
+        <h2 class="section-title" data-i18n="proj.title">Projetos selecionados</h2>
+        <p class="section-sub" data-i18n="proj.sub">Da família de agentes de IA para o setor público a aplicações web full-stack e modelagem de dados.</p>
       </div>
 
       <div class="filters" data-bind="filters"></div>
@@ -126,31 +151,31 @@
   <section class="section ia-focus" id="ia">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Diferencial</span>
-        <h2 class="section-title">Como construo agentes de IA com RAG</h2>
-        <p class="section-sub">O processo que aplico nos agentes dos sistemas DFLegal e VisaDF: do dado bruto à resposta fundamentada em linguagem natural.</p>
+        <span class="eyebrow" data-i18n="ia.eyebrow">Diferencial</span>
+        <h2 class="section-title" data-i18n="ia.title">Como construo agentes de IA com RAG</h2>
+        <p class="section-sub" data-i18n="ia.sub">O processo que aplico nos agentes dos sistemas DFLegal e VisaDF: do dado bruto à resposta fundamentada em linguagem natural.</p>
       </div>
 
       <div class="ia-flow">
         <div class="ia-step reveal">
           <span class="ia-num">01</span>
-          <h4>Ingestão & Embeddings</h4>
-          <p>Extraio legislação, schema do banco e dados operacionais, e os transformo em vetores armazenados no pgvector.</p>
+          <h4 data-i18n="ia.step1.title">Ingestão & Embeddings</h4>
+          <p data-i18n="ia.step1.desc">Extraio legislação, schema do banco e dados operacionais, e os transformo em vetores armazenados no pgvector.</p>
         </div>
         <div class="ia-step reveal">
           <span class="ia-num">02</span>
-          <h4>Recuperação Semântica</h4>
-          <p>Busca por similaridade com threshold calibrado, recuperando apenas o contexto relevante para cada pergunta.</p>
+          <h4 data-i18n="ia.step2.title">Recuperação Semântica</h4>
+          <p data-i18n="ia.step2.desc">Busca por similaridade com threshold calibrado, recuperando apenas o contexto relevante para cada pergunta.</p>
         </div>
         <div class="ia-step reveal">
           <span class="ia-num">03</span>
-          <h4>Text-to-SQL & Geração</h4>
-          <p>O LLM gera consultas SQL com joins corretos e respostas fundamentadas, combinando RAG e dados ao vivo.</p>
+          <h4 data-i18n="ia.step3.title">Text-to-SQL & Geração</h4>
+          <p data-i18n="ia.step3.desc">O LLM gera consultas SQL com joins corretos e respostas fundamentadas, combinando RAG e dados ao vivo.</p>
         </div>
         <div class="ia-step reveal">
           <span class="ia-num">04</span>
-          <h4>Feedback & Observabilidade</h4>
-          <p>Conversas persistidas, feedback que vira memória e telemetria de custo, tokens e latência por chamada.</p>
+          <h4 data-i18n="ia.step4.title">Feedback & Observabilidade</h4>
+          <p data-i18n="ia.step4.desc">Conversas persistidas, feedback que vira memória e telemetria de custo, tokens e latência por chamada.</p>
         </div>
       </div>
     </div>
@@ -160,9 +185,9 @@
   <section class="section gh" id="github">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow">Ao vivo</span>
-        <h2 class="section-title">No que estou trabalhando</h2>
-        <p class="section-sub">Dados puxados diretamente do GitHub a cada visita — sempre atualizados com meus últimos commits e repositórios.</p>
+        <span class="eyebrow" data-i18n="gh.eyebrow">Ao vivo</span>
+        <h2 class="section-title" data-i18n="gh.title">No que estou trabalhando</h2>
+        <p class="section-sub" data-i18n="gh.sub">Dados puxados diretamente do GitHub a cada visita — sempre atualizados com meus últimos commits e repositórios.</p>
       </div>
 
       <!-- Card de perfil + estatísticas -->
@@ -176,7 +201,7 @@
       <div class="gh-columns">
         <!-- Atividade recente -->
         <div class="gh-col reveal">
-          <h3 class="gh-col-title">Atividade recente</h3>
+          <h3 class="gh-col-title" data-i18n="gh.activity">Atividade recente</h3>
           <ul class="gh-activity" data-bind="gh-activity">
             <li class="gh-skeleton"></li>
             <li class="gh-skeleton"></li>
@@ -186,7 +211,7 @@
 
         <!-- Repositórios em destaque -->
         <div class="gh-col reveal">
-          <h3 class="gh-col-title">Repositórios recentes</h3>
+          <h3 class="gh-col-title" data-i18n="gh.repos">Repositórios recentes</h3>
           <div class="gh-repos" data-bind="gh-repos">
             <div class="gh-skeleton" style="height:96px"></div>
             <div class="gh-skeleton" style="height:96px"></div>
@@ -194,18 +219,18 @@
         </div>
       </div>
 
-      <a href="#" class="gh-viewall" data-link="github" target="_blank" rel="noopener">Ver perfil completo no GitHub →</a>
+      <a href="#" class="gh-viewall" data-link="github" data-i18n="gh.viewall" target="_blank" rel="noopener">Ver perfil completo no GitHub →</a>
     </div>
   </section>
 
   <!-- ===================== CONTATO ===================== -->
   <section class="section contact" id="contato">
     <div class="wrap">
-      <span class="eyebrow" style="justify-content:center">Contato</span>
-      <h2 class="section-title">Vamos construir algo juntos</h2>
-      <p class="contact-sub">Aberto a oportunidades, colaborações e conversas sobre IA, back-end e desenvolvimento web.</p>
+      <span class="eyebrow" style="justify-content:center" data-i18n="contact.eyebrow">Contato</span>
+      <h2 class="section-title" data-i18n="contact.title">Vamos construir algo juntos</h2>
+      <p class="contact-sub" data-i18n="contact.sub">Aberto a oportunidades, colaborações e conversas sobre IA, back-end e desenvolvimento web.</p>
       <div class="contact-links">
-        <a href="#" class="btn btn-primary" data-link="email">✉️ Enviar e-mail</a>
+        <a href="#" class="btn btn-primary" data-link="email" data-i18n="contact.email">✉️ Enviar e-mail</a>
         <a href="#" class="btn btn-ghost" data-link="github" target="_blank" rel="noopener">GitHub</a>
         <a href="#" class="btn btn-ghost" data-link="linkedin" target="_blank" rel="noopener">LinkedIn</a>
       </div>
@@ -215,7 +240,7 @@
   <!-- ===================== FOOTER ===================== -->
   <footer>
     <div class="wrap">
-      <p>© <span data-bind="ano">2026</span> <span data-bind="nome">Vinícius Eloi Corrêa</span> · Construído com HTML, CSS e JavaScript · Publicado via GitHub Pages</p>
+      <p>© <span data-bind="ano">2026</span> <span data-bind="nome">Vinícius Eloi Corrêa</span> · <span data-i18n="footer.text">Construído com HTML, CSS e JavaScript</span></p>
     </div>
   </footer>
 
