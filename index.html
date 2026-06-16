@@ -42,7 +42,6 @@
       <a href="#topo" class="nav-brand"><span data-bind="brand">Portfolio</span><span class="dot">.</span></a>
       <button class="nav-toggle" aria-label="Abrir menu">☰</button>
       <ul class="nav-links">
-        <li><a href="#sobre">Sobre</a></li>
         <li><a href="#experiencia">Experiência</a></li>
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#ia">Agentes de IA</a></li>
@@ -52,58 +51,48 @@
     </div>
   </nav>
 
-  <!-- ===================== HERO ===================== -->
+  <!-- ===================== HERO (apresentação + foto) ===================== -->
   <header class="hero" id="topo">
-    <div class="wrap hero-inner">
-      <span class="badge"><span class="pulse"></span> Desenvolvedor na Level33</span>
-      <h1>Olá, sou <span class="text-gradient" data-bind="nome">Vinícius</span></h1>
-      <p class="tagline" data-bind="tagline">Construo agentes de IA com RAG, back-end em .NET e front-end moderno.</p>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <span class="badge"><span class="pulse"></span> Desenvolvedor na Level33</span>
+        <h1>Olá, sou <span class="text-gradient" data-bind="nome">Vinícius</span></h1>
+        <p class="tagline" data-bind="tagline">Construo agentes de IA com RAG, back-end em .NET e front-end moderno.</p>
 
-      <div class="hero-cta">
-        <a href="#projetos" class="btn btn-primary">Ver projetos →</a>
-        <a href="#contato" class="btn btn-ghost">Entrar em contato</a>
-        <a href="#" class="btn btn-ghost" data-link="cv" target="_blank" rel="noopener">Baixar CV</a>
+        <p class="hero-bio" data-bind="sobre-curto">
+          Desenvolvedor full-stack na Level33, atuando em sistemas web para saúde,
+          vigilância sanitária, transporte e setor jurídico, além de agentes de IA com RAG.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#projetos" class="btn btn-primary">Ver projetos →</a>
+          <a href="#contato" class="btn btn-ghost">Entrar em contato</a>
+          <a href="#" class="btn btn-ghost" data-link="cv" target="_blank" rel="noopener">Baixar CV</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="num text-gradient">Level33</div>
+            <div class="lbl">Empresa</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num text-gradient">Full-Stack</div>
+            <div class="lbl">.NET + Next.js</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num text-gradient">IA · RAG</div>
+            <div class="lbl">Especialidade</div>
+          </div>
+        </div>
       </div>
 
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="num text-gradient">Level33</div>
-          <div class="lbl">Empresa</div>
-        </div>
-        <div class="hero-stat">
-          <div class="num text-gradient">Full-Stack</div>
-          <div class="lbl">.NET + Next.js</div>
-        </div>
-        <div class="hero-stat">
-          <div class="num text-gradient">IA · RAG</div>
-          <div class="lbl">Especialidade</div>
-        </div>
+      <div class="hero-photo reveal">
+        <img data-bind="foto" src="" alt="Foto de perfil" loading="eager" />
       </div>
     </div>
   </header>
 
-  <!-- ===================== SOBRE + SKILLS ===================== -->
-  <section class="section" id="sobre">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Sobre</span>
-        <h2 class="section-title">Quem está por trás do código</h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-photo reveal">
-          <img data-bind="foto" src="" alt="Foto de perfil" loading="lazy" />
-        </div>
-        <div class="about-text reveal" data-bind="sobre">
-          <p>Carregando…</p>
-        </div>
-      </div>
-
-      <div class="skills-stack reveal" data-bind="skills"></div>
-    </div>
-  </section>
-
-  <!-- ===================== EXPERIÊNCIA ===================== -->
+  <!-- ===================== EXPERIÊNCIA + SKILLS ===================== -->
   <section class="section" id="experiencia">
     <div class="wrap">
       <div class="section-head">
@@ -111,6 +100,11 @@
         <h2 class="section-title">Experiência & Formação</h2>
       </div>
       <div class="timeline" data-bind="timeline"></div>
+
+      <div class="skills-block">
+        <h3 class="skills-heading">Tecnologias & ferramentas</h3>
+        <div class="skills-stack reveal" data-bind="skills"></div>
+      </div>
     </div>
   </section>
 

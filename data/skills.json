@@ -1,26 +1,39 @@
 [
   {
-    "grupo": "Linguagens",
-    "itens": ["C#", "Python", "TypeScript", "JavaScript", "SQL", "HTML5", "CSS3"]
+    "grupo": "IA & RAG",
+    "itens": [
+      { "nome": "RAG", "slug": "", "cor": "" },
+      { "nome": "pgvector", "slug": "postgresql", "cor": "4169E1" },
+      { "nome": "Embeddings", "slug": "", "cor": "" },
+      { "nome": "DeepSeek", "slug": "deepseek", "cor": "4D6BFE" },
+      { "nome": "Gemini", "slug": "googlegemini", "cor": "8E75B2" },
+      { "nome": "Ollama", "slug": "ollama", "cor": "FFFFFF" }
+    ]
   },
   {
     "grupo": "Back-end",
-    "itens": [".NET 8", "ASP.NET Core", "FastAPI", "APIs REST"]
+    "itens": [
+      { "nome": ".NET", "slug": "dotnet", "cor": "512BD4" },
+      { "nome": "C#", "slug": "dotnet", "cor": "512BD4" },
+      { "nome": "Python", "slug": "python", "cor": "3776AB" },
+      { "nome": "FastAPI", "slug": "fastapi", "cor": "009688" }
+    ]
   },
   {
     "grupo": "Front-end",
-    "itens": ["Next.js", "React", "Tailwind CSS", "ECharts"]
+    "itens": [
+      { "nome": "Next.js", "slug": "nextdotjs", "cor": "FFFFFF" },
+      { "nome": "React", "slug": "react", "cor": "61DAFB" },
+      { "nome": "TypeScript", "slug": "typescript", "cor": "3178C6" }
+    ]
   },
   {
-    "grupo": "IA & Dados",
-    "itens": ["RAG", "Embeddings", "pgvector", "Ollama", "Text-to-SQL", "LLMs (DeepSeek, Gemini)"]
-  },
-  {
-    "grupo": "Banco de Dados",
-    "itens": ["PostgreSQL", "SQL Server", "MySQL", "Modelagem Relacional"]
-  },
-  {
-    "grupo": "DevOps & Infra",
-    "itens": ["Docker", "Docker Swarm", "CI/CD", "Git", "GitHub Pages", "Linux"]
+    "grupo": "Dados & Infra",
+    "itens": [
+      { "nome": "PostgreSQL", "slug": "postgresql", "cor": "4169E1" },
+      { "nome": "SQL Server", "slug": "", "cor": "" },
+      { "nome": "Docker", "slug": "docker", "cor": "2496ED" },
+      { "nome": "Linux", "slug": "linux", "cor": "FCC624" }
+    ]
   }
 ]
