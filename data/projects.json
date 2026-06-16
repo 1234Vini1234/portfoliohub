@@ -35,8 +35,9 @@
   },
   {
     "nome": "DFLegal",
-    "categoria": "web",
+    "categoria": "ia",
     "destaque": true,
+    "ia": true,
     "empresa": "Level33",
     "resumo": "Sistema de fiscalização que apoia as vistorias em estabelecimentos do DF, com um agente de IA para consultar legislação.",
     "descricao": "Plataforma para gestão das vistorias/fiscalizações realizadas em estabelecimentos do Distrito Federal: registro de inspeções, acompanhamento de processos e dados operacionais. Sobre essa base, desenvolvi também o DFLegalAgente — um agente de IA com RAG que responde perguntas sobre legislação e processos em linguagem natural, com roteamento por dataset (legislação, schema de dados e base operacional).",
@@ -52,8 +53,9 @@
   },
   {
     "nome": "VisaDF",
-    "categoria": "web",
+    "categoria": "ia",
     "destaque": true,
+    "ia": true,
     "empresa": "Level33",
     "resumo": "Sistema da vigilância sanitária do DF, com um agente de IA que responde sobre legislação e dados de inspeção.",
     "descricao": "Sistema voltado à vigilância sanitária do Distrito Federal, apoiando o trabalho de inspeção e o acompanhamento de processos. Desenvolvi a camada de agente de IA (VisaAgente): RAG sobre legislação e documentos técnicos, persistência de conversas, feedback que vira memória e um dashboard analítico com telemetria de custo, tokens e latência do agente.",
@@ -71,6 +73,7 @@
     "nome": "Agentes de IA com RAG",
     "categoria": "ia",
     "destaque": true,
+    "ia": true,
     "empresa": "Level33",
     "resumo": "Família de agentes de IA conversacionais que respondem perguntas sobre legislação e dados operacionais em linguagem natural.",
     "descricao": "Linha de agentes de IA construídos para os sistemas do setor público (vigilância sanitária e fiscalização). O processo que aplico: ingestão e vetorização de bases (legislação, schema do banco, dados operacionais) no pgvector; recuperação semântica com threshold calibrado; geração de Text-to-SQL com joins corretos; persistência de conversas; feedback do usuário convertido em memória; e observabilidade completa (custo, tokens, latência por etapa do pipeline).",
@@ -80,7 +83,7 @@
       "Migração de embeddings (768 → 1536 dims) in-place, sem perda",
       "Telemetria de custo/tokens/latência com query profiler"
     ],
-    "stack": ["Python", "FastAPI", "pgvector", "Ollama", "LLMs", "Docker"],
+    "stack": ["Python", "FastAPI", "pgvector", "DeepSeek", "Ollama", "Docker"],
     "tipo": "Profissional · Setor Público",
     "confidencial": true,
     "links": {}

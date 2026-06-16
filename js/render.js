@@ -2,6 +2,7 @@
    render.js — carrega os dados (data/*.json)
    e injeta o conteúdo no DOM.
    ============================================ */
+import { iconHTML } from "./icons.js";
 
 /** Escapa texto para evitar HTML indevido vindo do JSON. */
 function esc(str = "") {
@@ -33,16 +34,11 @@ function renderProfile(p) {
   setText("[data-bind='tagline']", p.tagline);
   setText("[data-bind='brand']", p.nome.split(" ")[0]);
 
-  // Sobre (parágrafos separados por quebra dupla)
-  const aboutEl = document.querySelector("[data-bind='sobre']");
-  if (aboutEl) {
-    aboutEl.innerHTML = p.sobre
-      .split("\n\n")
-      .map((para) => `<p>${esc(para)}</p>`)
-      .join("");
-  }
+  // Bio curta no Hero (usa bio_curta do JSON; se ausente, mantém o texto fixo do HTML)
+  const bioEl = document.querySelector("[data-bind='sobre-curto']");
+  if (bioEl && p.bio_curta) bioEl.textContent = p.bio_curta;
 
-  // Foto de perfil (seção Sobre)
+  // Foto de perfil (Hero)
   const fotoEl = document.querySelector("[data-bind='foto']");
   if (fotoEl) {
     if (p.foto) {
@@ -50,7 +46,7 @@ function renderProfile(p) {
       fotoEl.alt = `Foto de ${p.nome}`;
     } else {
       // Sem foto: esconde o container da imagem
-      const wrap = fotoEl.closest(".about-photo");
+      const wrap = fotoEl.closest(".hero-photo");
       if (wrap) wrap.style.display = "none";
     }
   }
@@ -78,7 +74,13 @@ function renderSkills(groups) {
       <div class="skill-group">
         <p class="skill-group-title">${esc(g.grupo)}</p>
         <div class="chips">
-          ${g.itens.map((i) => `<span class="chip">${esc(i)}</span>`).join("")}
+          ${g.itens
+            .map((i) => {
+              // Aceita item como objeto {nome,slug,cor} ou string simples
+              const nome = typeof i === "string" ? i : i.nome;
+              return `<span class="chip">${iconHTML(nome)}<span>${esc(nome)}</span></span>`;
+            })
+            .join("")}
         </div>
       </div>`
     )
@@ -114,9 +116,16 @@ function projectCard(proj) {
     .map((h) => `<li>${esc(h)}</li>`)
     .join("");
 
-  const tags = (proj.stack || [])
-    .map((t) => `<span class="tag">${esc(t)}</span>`)
-    .join("");
+  // Mostra no máximo 4 techs principais; o resto vira "+N" (evita poluição)
+  const stack = proj.stack || [];
+  const MAX_TAGS = 4;
+  const shown = stack.slice(0, MAX_TAGS);
+  const extra = stack.length - shown.length;
+  const tags =
+    shown
+      .map((t) => `<span class="tag">${iconHTML(t)}<span>${esc(t)}</span></span>`)
+      .join("") +
+    (extra > 0 ? `<span class="tag tag--more">+${extra}</span>` : "");
 
   // Links: se confidencial e sem links, mostra cadeado; senão renderiza links reais.
   let linksHtml = "";
@@ -134,10 +143,16 @@ function projectCard(proj) {
     linksHtml = `<span class="muted-link">Em breve</span>`;
   }
 
+  // Projetos de IA ganham mais peso visual (card maior, selo dedicado)
+  const iaClass = proj.ia ? "card--ia" : "";
+  const kindBadge = proj.ia
+    ? '<span class="card-kind card-kind--ia">✦ Agente de IA</span>'
+    : `<span class="card-kind ${featured}">${featured ? "★ Destaque" : esc(kindLabel)}</span>`;
+
   return `
-    <article class="card reveal" data-cat="${esc(proj.categoria)}">
+    <article class="card reveal ${iaClass}" data-cat="${esc(proj.categoria)}">
       <div class="card-top">
-        <span class="card-kind ${featured}">${featured ? "★ Destaque" : esc(kindLabel)}</span>
+        ${kindBadge}
         ${proj.confidencial ? '<span class="card-lock">🔒 Confidencial</span>' : ""}
       </div>
       <h3>${esc(proj.nome)}</h3>
@@ -152,7 +167,10 @@ function projectCard(proj) {
 function renderProjects(projects) {
   const grid = document.querySelector("[data-bind='projects']");
   if (!grid) return;
-  grid.innerHTML = projects.map(projectCard).join("");
+
+  // Projetos de IA primeiro (mais peso); demais preservam a ordem do JSON
+  const ordered = [...projects].sort((a, b) => (b.ia === true) - (a.ia === true));
+  grid.innerHTML = ordered.map(projectCard).join("");
 
   // Monta os botões de filtro a partir das categorias presentes
   const present = new Set(projects.map((p) => p.categoria));

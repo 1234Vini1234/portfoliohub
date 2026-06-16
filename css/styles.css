@@ -157,10 +157,64 @@
   pointer-events: none;
 }
 
-.hero-inner {
+.hero-grid {
   position: relative;
   z-index: 1;
-  max-width: 760px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-text {
+  min-width: 0;
+}
+
+.hero-bio {
+  color: var(--text-soft);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-top: 18px;
+  max-width: 540px;
+}
+
+/* Foto do Hero (retrato com moldura de acento) */
+.hero-photo {
+  position: relative;
+  justify-self: center;
+}
+
+.hero-photo img {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 22%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  filter: grayscale(.18) contrast(1.02);
+  transition: filter var(--t-slow), transform var(--t-slow);
+}
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 16px -16px -16px 16px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  z-index: -1;
+  opacity: .5;
+  transition: var(--t-slow);
+}
+
+.hero-photo:hover img {
+  filter: grayscale(0) contrast(1);
+  transform: translate(2px, -2px);
+}
+
+.hero-photo:hover::after {
+  inset: 12px -18px -18px 12px;
+  opacity: .8;
 }
 
 .hero .badge {
@@ -265,57 +319,18 @@
   letter-spacing: 1px;
 }
 
-/* ---------- ABOUT + SKILLS ---------- */
-.about-grid {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 48px;
-  align-items: center;
-  margin-bottom: 48px;
+/* ---------- SKILLS (dentro da seção Experiência) ---------- */
+.skills-block {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-soft);
 }
 
-/* Foto de perfil (retrato) */
-.about-photo {
-  position: relative;
-}
-
-.about-photo img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center 22%;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  filter: grayscale(.15) contrast(1.02);
-  transition: filter var(--t-slow), transform var(--t-slow);
-}
-
-.about-photo::after {
-  /* Moldura de acento deslocada, dá profundidade */
-  content: "";
-  position: absolute;
-  inset: 14px -14px -14px 14px;
-  border: 1px solid var(--accent);
-  border-radius: var(--radius);
-  z-index: -1;
-  opacity: .55;
-  transition: var(--t-slow);
-}
-
-.about-photo:hover img {
-  filter: grayscale(0) contrast(1);
-  transform: translate(2px, -2px);
-}
-
-.about-photo:hover::after {
-  inset: 10px -16px -16px 10px;
-  opacity: .85;
-}
-
-.about-text p {
-  color: var(--text-soft);
-  font-size: 17px;
-  margin-bottom: 16px;
+.skills-heading {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin-bottom: 24px;
+  color: var(--text);
 }
 
 .skills-stack {
@@ -339,12 +354,15 @@
 }
 
 .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 13px;
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text-soft);
-  padding: 6px 13px;
-  border-radius: 30px;
+  padding: 7px 14px;
+  border-radius: 8px;
   transition: var(--t);
 }
 
@@ -352,6 +370,25 @@
   border-color: var(--accent-2);
   color: var(--text);
   transform: translateY(-2px);
+}
+
+/* Ícone de tecnologia (Simple Icons via CDN ou fallback genérico) */
+.tech-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.tech-ico--generic {
+  color: var(--accent);
+}
+
+/* Logos brancos (Next.js, Ollama) ganham leve contorno p/ não sumir no fundo escuro */
+.tech-ico[src*="/FFFFFF"] {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, .25));
 }
 
 /* ---------- TIMELINE ---------- */
@@ -464,11 +501,13 @@
 /* ---------- GRID DE PROJETOS ---------- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   gap: 22px;
 }
 
+/* Card padrão ocupa metade (3/6); card de IA ocupa a linha inteira (destaque) */
 .card {
+  grid-column: span 3;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -478,6 +517,24 @@
   transition: var(--t-slow);
   position: relative;
   overflow: hidden;
+}
+
+/* Projetos de IA: mais peso visual */
+.card--ia {
+  grid-column: span 6;
+  border-color: rgba(255, 107, 26, .35);
+  background:
+    linear-gradient(180deg, rgba(255, 107, 26, .05), transparent 40%),
+    var(--surface);
+}
+
+.card--ia h3 {
+  font-size: 23px;
+}
+
+.card--ia .card-resumo {
+  font-size: 15.5px;
+  max-width: 70ch;
 }
 
 .card::after {
@@ -526,6 +583,14 @@
   color: var(--accent-3);
   border-color: rgba(255, 107, 26, .4);
   background: rgba(255, 107, 26, .07);
+}
+
+/* Selo dedicado dos projetos de IA */
+.card-kind--ia {
+  color: #fff;
+  border-color: transparent;
+  background: var(--gradient);
+  font-weight: 600;
 }
 
 .card-lock {
@@ -587,11 +652,26 @@
 }
 
 .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 12px;
-  background: rgba(255, 107, 26, .12);
-  color: var(--accent-2);
-  padding: 3px 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  color: var(--text-soft);
+  padding: 5px 10px;
   border-radius: 6px;
+}
+
+.tag .tech-ico {
+  width: 14px;
+  height: 14px;
+}
+
+.tag--more {
+  background: transparent;
+  border-style: dashed;
+  color: var(--muted);
 }
 
 .card-links {
@@ -1126,24 +1206,42 @@ footer a:hover {
 
 /* ---------- RESPONSIVO ---------- */
 @media (max-width: 860px) {
-  .about-grid {
+  .hero-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 36px;
     justify-items: center;
     text-align: center;
   }
 
-  .about-photo {
-    max-width: 260px;
+  /* Foto acima do texto na primeira dobra */
+  .hero-photo {
+    order: -1;
+    max-width: 240px;
   }
 
-  .about-text {
-    text-align: left;
+  .hero-bio {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta,
+  .hero-stats {
+    justify-content: center;
   }
 
   .gh-top,
   .gh-columns {
     grid-template-columns: 1fr;
+  }
+
+  /* Grade de projetos vira 1 coluna (todos ocupam largura total) */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card,
+  .card--ia {
+    grid-column: 1 / -1;
   }
 }
 
