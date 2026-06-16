@@ -42,6 +42,19 @@ function renderProfile(p) {
       .join("");
   }
 
+  // Foto de perfil (seção Sobre)
+  const fotoEl = document.querySelector("[data-bind='foto']");
+  if (fotoEl) {
+    if (p.foto) {
+      fotoEl.src = p.foto;
+      fotoEl.alt = `Foto de ${p.nome}`;
+    } else {
+      // Sem foto: esconde o container da imagem
+      const wrap = fotoEl.closest(".about-photo");
+      if (wrap) wrap.style.display = "none";
+    }
+  }
+
   // Links de contato (hero + contato + footer)
   const { github, linkedin, email } = p.contato;
   document.querySelectorAll("[data-link='github']").forEach((a) => (a.href = github));
@@ -177,7 +190,9 @@ export async function hydrate() {
     renderExperience(experience);
     renderProjects(projects);
 
-    document.dispatchEvent(new CustomEvent("content:ready"));
+    document.dispatchEvent(
+      new CustomEvent("content:ready", { detail: { github_user: profile.github_user } })
+    );
   } catch (err) {
     console.error("[PortfolioHUB] erro ao carregar dados:", err);
     const grid = document.querySelector("[data-bind='projects']");

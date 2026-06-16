@@ -58,7 +58,7 @@ python -m http.server 8000
 npx serve .
 ```
 
-Depois acesse `http://localhost:8000`.
+Depois acesse ``.
 
 ## Deploy
 

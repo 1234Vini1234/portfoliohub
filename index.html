@@ -14,6 +14,8 @@
   <title>Portfólio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/styles.css" />
@@ -21,6 +23,18 @@
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
+
+  <!-- ===================== INTRO / BOAS-VINDAS ===================== -->
+  <div class="intro" id="intro" role="dialog" aria-label="Welcome">
+    <div class="intro-inner">
+      <span class="intro-kicker">Welcome</span>
+      <h2 class="intro-msg">
+        <span class="intro-typed" aria-hidden="true"></span><span class="intro-caret" aria-hidden="true"></span>
+      </h2>
+      <span class="intro-name" data-bind="nome">Vinícius Eloi Corrêa</span>
+      <span class="intro-hint">clique, role ou pressione uma tecla para entrar</span>
+    </div>
+  </div>
 
   <!-- ===================== NAVBAR ===================== -->
   <nav class="nav">
@@ -32,6 +46,7 @@
         <li><a href="#experiencia">Experiência</a></li>
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#ia">Agentes de IA</a></li>
+        <li><a href="#github">GitHub</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
     </div>
@@ -76,11 +91,15 @@
       </div>
 
       <div class="about-grid">
+        <div class="about-photo reveal">
+          <img data-bind="foto" src="" alt="Foto de perfil" loading="lazy" />
+        </div>
         <div class="about-text reveal" data-bind="sobre">
           <p>Carregando…</p>
         </div>
-        <div class="skills-stack reveal" data-bind="skills"></div>
       </div>
+
+      <div class="skills-stack reveal" data-bind="skills"></div>
     </div>
   </section>
 
@@ -140,6 +159,48 @@
           <p>Conversas persistidas, feedback que vira memória e telemetria de custo, tokens e latência por chamada.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== GITHUB AO VIVO ===================== -->
+  <section class="section gh" id="github">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Ao vivo</span>
+        <h2 class="section-title">No que estou trabalhando</h2>
+        <p class="section-sub">Dados puxados diretamente do GitHub a cada visita — sempre atualizados com meus últimos commits e repositórios.</p>
+      </div>
+
+      <!-- Card de perfil + estatísticas -->
+      <div class="gh-top reveal">
+        <div class="gh-profile" data-bind="gh-profile">
+          <div class="gh-skeleton" style="height:84px"></div>
+        </div>
+        <div class="gh-stats" data-bind="gh-stats"></div>
+      </div>
+
+      <div class="gh-columns">
+        <!-- Atividade recente -->
+        <div class="gh-col reveal">
+          <h3 class="gh-col-title">Atividade recente</h3>
+          <ul class="gh-activity" data-bind="gh-activity">
+            <li class="gh-skeleton"></li>
+            <li class="gh-skeleton"></li>
+            <li class="gh-skeleton"></li>
+          </ul>
+        </div>
+
+        <!-- Repositórios em destaque -->
+        <div class="gh-col reveal">
+          <h3 class="gh-col-title">Repositórios recentes</h3>
+          <div class="gh-repos" data-bind="gh-repos">
+            <div class="gh-skeleton" style="height:96px"></div>
+            <div class="gh-skeleton" style="height:96px"></div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="gh-viewall" data-link="github" target="_blank" rel="noopener">Ver perfil completo no GitHub →</a>
     </div>
   </section>
 

@@ -2,9 +2,11 @@
   "nome": "Vinícius Eloi Corrêa",
   "titulo": "Desenvolvedor Full-Stack · IA Aplicada",
   "empresa": "Level33",
+  "foto": "assets/img/perfil.jpeg",
   "tagline": "Desenvolvedor na Level33. Construo sistemas web full-stack e agentes de IA com RAG, back-end em .NET e front-end moderno com Next.js.",
   "localizacao": "Brasília · DF",
   "sobre": "Sou desenvolvedor full-stack na Level33, onde atuo na construção de sistemas web para a saúde, vigilância sanitária, transporte público e setor jurídico. Trabalho de ponta a ponta: back-end em .NET, front-end em Next.js e bancos relacionais, além de agentes de IA com RAG (Retrieval-Augmented Generation), pipelines de embeddings e bancos vetoriais.\n\nGosto de transformar regras de negócio e bases de dados complexas em produtos que as pessoas usam no dia a dia — com observabilidade, persistência e deploy via Docker e CI/CD.",
+  "github_user": "1234Vini1234",
   "contato": {
     "github": "https://github.com/1234Vini1234",
     "linkedin": "https://www.linkedin.com/in/SEU-USUARIO-LINKEDIN",
