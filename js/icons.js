@@ -27,6 +27,7 @@ const TECH = {
   "next.js": { slug: "nextdotjs", cor: "FFFFFF" },
   "next.js 15": { slug: "nextdotjs", cor: "FFFFFF" },
   "react": { slug: "react", cor: "61DAFB" },
+  "react native": { slug: "react", cor: "61DAFB" },
   "tailwind css": { slug: "tailwindcss", cor: "06B6D4" },
   "tailwind css 4": { slug: "tailwindcss", cor: "06B6D4" },
   "echarts": { slug: "apacheecharts", cor: "AA344D" },
@@ -40,6 +41,7 @@ const TECH = {
   "llms": { slug: "", cor: "" },
   "deepseek": { slug: "deepseek", cor: "4D6BFE" },
   "gemini": { slug: "googlegemini", cor: "8E75B2" },
+  "claude code": { slug: "claude", cor: "D97757" },
 
   // Banco de dados
   "postgresql": { slug: "postgresql", cor: "4169E1" },
@@ -54,12 +56,15 @@ const TECH = {
   "docker swarm": { slug: "docker", cor: "2496ED" },
   "ci/cd": { slug: "githubactions", cor: "2088FF" },
   "git": { slug: "git", cor: "F05032" },
+  "github": { slug: "github", cor: "FFFFFF" },
   "linux": { slug: "linux", cor: "FCC624" },
   "nginx": { slug: "nginx", cor: "009639" },
 
   // Outros que aparecem nas tags de projeto
   "prisma": { slug: "prisma", cor: "2D3748" },
   "supabase": { slug: "supabase", cor: "3FCF8E" },
+  "maestro": { slug: "", cor: "" },
+  "inglês": { slug: "", cor: "" },
   "full-stack": { slug: "", cor: "" },
   "web": { slug: "", cor: "" }
 };

@@ -3,7 +3,7 @@
    (navbar, menu mobile, filtros, scroll reveal)
    ============================================ */
 import { hydrate } from "./render.js";
-import { loadGitHub } from "./github.js";
+import { loadGitLab } from "./gitlab.js";
 import { initI18n, applyUI, toggleLang } from "./i18n.js";
 import { toggleTheme } from "./theme.js";
 
@@ -284,14 +284,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   hydrate(); // carrega os JSON e injeta o conteúdo no idioma ativo
 });
 
-// Quando o conteúdo dinâmico estiver pronto, liga filtros + reveal + GitHub
-let ghUser = null;
-document.addEventListener("content:ready", (e) => {
+// Quando o conteúdo dinâmico estiver pronto, liga filtros + reveal + mapa de commits
+document.addEventListener("content:ready", () => {
   initFilters();
   initReveal();
-
-  ghUser = e.detail?.github_user || ghUser;
-  if (ghUser) loadGitHub(ghUser);
+  loadGitLab(); // só aparece se houver data/gitlab.json
 });
 
 // Trocar de idioma: re-renderiza o conteúdo dinâmico (cards, timeline, etc.)
