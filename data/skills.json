@@ -1,39 +1,60 @@
 [
   {
-    "grupo": "IA & RAG",
-    "itens": [
-      { "nome": "RAG", "slug": "", "cor": "" },
-      { "nome": "pgvector", "slug": "postgresql", "cor": "4169E1" },
-      { "nome": "Embeddings", "slug": "", "cor": "" },
-      { "nome": "DeepSeek", "slug": "deepseek", "cor": "4D6BFE" },
-      { "nome": "Gemini", "slug": "googlegemini", "cor": "8E75B2" },
-      { "nome": "Ollama", "slug": "ollama", "cor": "FFFFFF" }
-    ]
-  },
-  {
     "grupo": "Back-end",
+    "grupo_en": "Back-end",
     "itens": [
-      { "nome": ".NET", "slug": "dotnet", "cor": "512BD4" },
       { "nome": "C#", "slug": "dotnet", "cor": "512BD4" },
-      { "nome": "Python", "slug": "python", "cor": "3776AB" },
-      { "nome": "FastAPI", "slug": "fastapi", "cor": "009688" }
+      { "nome": ".NET", "slug": "dotnet", "cor": "512BD4" },
+      { "nome": "Python", "slug": "python", "cor": "3776AB" }
     ]
   },
   {
     "grupo": "Front-end",
+    "grupo_en": "Front-end",
     "itens": [
+      { "nome": "TypeScript", "slug": "typescript", "cor": "3178C6" },
       { "nome": "Next.js", "slug": "nextdotjs", "cor": "FFFFFF" },
       { "nome": "React", "slug": "react", "cor": "61DAFB" },
-      { "nome": "TypeScript", "slug": "typescript", "cor": "3178C6" }
+      { "nome": "Tailwind CSS", "slug": "tailwindcss", "cor": "06B6D4" }
     ]
   },
   {
-    "grupo": "Dados & Infra",
+    "grupo": "Bancos de dados",
+    "grupo_en": "Databases",
     "itens": [
+      { "nome": "SQL", "slug": "", "cor": "" },
       { "nome": "PostgreSQL", "slug": "postgresql", "cor": "4169E1" },
       { "nome": "SQL Server", "slug": "", "cor": "" },
+      { "nome": "MySQL", "slug": "mysql", "cor": "4479A1" }
+    ]
+  },
+  {
+    "grupo": "IA aplicada",
+    "grupo_en": "Applied AI",
+    "itens": [
+      { "nome": "RAG", "slug": "", "cor": "" },
+      { "nome": "Embeddings", "slug": "", "cor": "" },
+      { "nome": "pgvector", "slug": "postgresql", "cor": "4169E1" },
+      { "nome": "Ollama", "slug": "ollama", "cor": "FFFFFF" }
+    ]
+  },
+  {
+    "grupo": "Ferramentas",
+    "grupo_en": "Tools",
+    "itens": [
+      { "nome": "Git", "slug": "git", "cor": "F05032" },
+      { "nome": "GitHub", "slug": "github", "cor": "FFFFFF" },
       { "nome": "Docker", "slug": "docker", "cor": "2496ED" },
-      { "nome": "Linux", "slug": "linux", "cor": "FCC624" }
+      { "nome": "Claude Code", "slug": "claude", "cor": "D97757" },
+      { "nome": "Maestro", "slug": "", "cor": "" }
+    ]
+  },
+  {
+    "grupo": "Estudando agora",
+    "grupo_en": "Currently learning",
+    "itens": [
+      { "nome": "React Native", "slug": "react", "cor": "61DAFB" },
+      { "nome": "Inglês", "slug": "", "cor": "" }
     ]
   }
 ]

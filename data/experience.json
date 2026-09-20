@@ -1,33 +1,43 @@
 [
   {
-    "periodo": "Atual",
-    "periodo_en": "Current",
-    "titulo": "Desenvolvedor Full-Stack",
-    "titulo_en": "Full-Stack Developer",
+    "periodo": "Set/2025 · Atual",
+    "periodo_en": "Sep/2025 · Present",
+    "titulo": "Estagiário de Desenvolvimento Fullstack e IA",
+    "titulo_en": "Fullstack Development and AI Intern",
     "organizacao": "Level33",
-    "descricao": "Desenvolvimento de sistemas web e agentes de IA para clientes da saúde, vigilância sanitária, transporte público e setor jurídico. Atuação de ponta a ponta: back-end em .NET, front-end em Next.js, modelagem de dados e agentes de IA com RAG, pipelines de embeddings, Text-to-SQL, observabilidade de custo/latência e deploy via Docker e CI/CD.",
-    "descricao_en": "Development of web systems and AI agents for clients in healthcare, health surveillance, public transportation and the legal sector. End-to-end work: .NET back-end, Next.js front-end, data modeling and AI agents with RAG, embedding pipelines, Text-to-SQL, cost/latency observability and deployment via Docker and CI/CD.",
-    "tags": [".NET", "Next.js", "Python", "RAG", "pgvector", "Docker"]
+    "descricao": "Participo do desenvolvimento de sistemas web com back-end em C# / .NET e front-end em TypeScript, Next.js e Tailwind CSS, integrados a PostgreSQL e SQL Server. Também atuo na evolução de agentes de IA com RAG: ingestão e estruturação de textos normativos, busca semântica e validação das respostas do modelo. O trabalho é em equipe, com revisão de desenvolvedores mais experientes.",
+    "descricao_en": "I take part in building web systems with a C# / .NET back-end and a TypeScript, Next.js and Tailwind CSS front-end, integrated with PostgreSQL and SQL Server. I also help evolve AI agents powered by RAG: ingesting and structuring legal texts, semantic search and validating model answers. It's teamwork, reviewed by more experienced developers.",
+    "tags": ["C#", ".NET", "Next.js", "TypeScript", "SQL", "RAG"]
   },
   {
     "periodo": "Projetos",
     "periodo_en": "Projects",
-    "titulo": "Sistemas para saúde, transporte e setor público",
-    "titulo_en": "Systems for healthcare, transportation and the public sector",
+    "titulo": "Projetos em que participei",
+    "titulo_en": "Projects I took part in",
     "organizacao": "Level33",
-    "descricao": "Entre as entregas: ProntoBook (sistema hospitalar), SEMOB (rede de transporte público), DFLegal (vistorias em estabelecimentos do DF) e VisaDF (vigilância sanitária do DF), além de agentes de IA que respondem perguntas sobre legislação e dados operacionais em linguagem natural.",
-    "descricao_en": "Among the deliverables: ProntoBook (hospital system), SEMOB (public transportation network), DFLegal (inspections of establishments in the Federal District) and VisaDF (health surveillance of the Federal District), as well as AI agents that answer questions about legislation and operational data in natural language.",
-    "tags": ["Sistemas Web", "Saúde", "Transporte", "Setor Público"]
+    "descricao": "Agentes de IA para consulta de legislação e normas sanitárias, sistemas de gestão jurídica para escritórios de advocacia e uma plataforma de gestão de ativos, além de modelagem de banco de dados. São sistemas internos de clientes, então não entro em detalhes: minha participação foi em desenvolvimento, testes de funcionalidades e no projeto de novas funcionalidades.",
+    "descricao_en": "AI agents for querying legislation and health regulations, legal management systems for law firms and an asset management platform, plus database modeling. These are clients' internal systems, so I won't go into detail: my part was development, feature testing and designing new features.",
+    "tags": ["Setor Público", "Jurídico", "Gestão de Ativos"]
   },
   {
-    "periodo": "Formação",
-    "periodo_en": "Education",
-    "titulo": "Engenharia de Software",
-    "titulo_en": "Software Engineering",
-    "organizacao": "Graduação",
-    "organizacao_en": "Undergraduate degree",
-    "descricao": "Estudante de Engenharia de Software, com foco em arquitetura de aplicações, bancos de dados e integração de sistemas de IA.",
-    "descricao_en": "Software Engineering student, focused on application architecture, databases and AI systems integration.",
-    "tags": ["Arquitetura", "Bancos de Dados", "Algoritmos"]
+    "periodo": "Cursando",
+    "periodo_en": "In progress",
+    "titulo": "Graduação em Engenharia de Software",
+    "titulo_en": "B.Sc. in Software Engineering",
+    "organizacao": "UniCEUB · Taguatinga (DF)",
+    "descricao": "Graduação em andamento. Nos trabalhos em equipe passei por modelagem de banco de dados, coesão e acoplamento e tecnologias disruptivas.",
+    "descricao_en": "Degree in progress. In team assignments I've worked on database modeling, cohesion and coupling, and emerging technologies.",
+    "tags": ["Bancos de Dados", "Arquitetura", "Trabalho em Equipe"]
+  },
+  {
+    "periodo": "Em andamento",
+    "periodo_en": "Ongoing",
+    "titulo": "Estudando agora",
+    "titulo_en": "Currently studying",
+    "organizacao": "Por conta própria",
+    "organizacao_en": "On my own",
+    "descricao": "Estudo contínuo de desenvolvimento fullstack e de aplicações com LLMs. No momento estou aprendendo React Native para desenvolvimento mobile e estudando inglês na Wizard by Pearson (nível inicial).",
+    "descricao_en": "Continuous study of fullstack development and LLM-based applications. Right now I'm learning React Native for mobile development and studying English at Wizard by Pearson (beginner level).",
+    "tags": ["React Native", "LLMs", "Inglês"]
   }
 ]

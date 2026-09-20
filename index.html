@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfólio de Vinícius Eloi Corrêa — desenvolvedor full-stack focado em agentes de IA, RAG, .NET e Next.js." />
+  <meta name="description" content="Portfólio de Vinícius Eloi Corrêa — estagiário de desenvolvimento fullstack e IA, trabalhando com C# / .NET, Next.js e agentes com RAG." />
   <meta name="author" content="Vinícius Eloi Corrêa" />
 
   <!-- Open Graph (compartilhamento em redes) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Vinícius Eloi Corrêa — Portfólio" />
-  <meta property="og:description" content="Desenvolvedor full-stack · IA aplicada, RAG, .NET e Next.js." />
+  <meta property="og:description" content="Estagiário em desenvolvimento fullstack e IA · C# / .NET, Next.js e RAG." />
 
   <title>Portfólio</title>
 
@@ -60,7 +60,7 @@
         <li><a href="#experiencia" data-i18n="nav.experiencia">Experiência</a></li>
         <li><a href="#projetos" data-i18n="nav.projetos">Projetos</a></li>
         <li><a href="#ia" data-i18n="nav.ia">Agentes de IA</a></li>
-        <li><a href="#github" data-i18n="nav.github">GitHub</a></li>
+        <li hidden><a href="#atividade" data-i18n="nav.atividade">Atividade</a></li>
         <li><a href="#contato" data-i18n="nav.contato">Contato</a></li>
       </ul>
       <div class="nav-actions">
@@ -78,13 +78,13 @@
   <header class="hero" id="topo">
     <div class="wrap hero-grid">
       <div class="hero-text">
-        <span class="badge"><span class="pulse"></span> <span data-i18n="hero.badge">Desenvolvedor na Level33</span></span>
+        <span class="badge"><span class="pulse"></span> <span data-i18n="hero.badge">Estagiário na Level33</span></span>
         <h1><span data-i18n="hero.ola">Olá, sou</span> <span class="text-gradient" data-bind="nome">Vinícius</span></h1>
-        <p class="tagline" data-bind="tagline">Construo agentes de IA com RAG, back-end em .NET e front-end moderno.</p>
+        <p class="tagline" data-bind="tagline">Estagiário de desenvolvimento fullstack, aprendendo em projetos reais com .NET, Next.js e agentes de IA.</p>
 
         <p class="hero-bio" data-bind="sobre-curto">
-          Desenvolvedor full-stack na Level33, atuando em sistemas web para saúde,
-          vigilância sanitária, transporte e setor jurídico, além de agentes de IA com RAG.
+          Tenho 19 anos, curso Engenharia de Software e sou estagiário na Level33, onde participo
+          de sistemas web em C# / .NET e Next.js e de agentes de IA com RAG.
         </p>
 
         <div class="hero-cta">
@@ -95,16 +95,16 @@
 
         <div class="hero-stats">
           <div class="hero-stat">
-            <div class="num text-gradient">Level33</div>
-            <div class="lbl" data-i18n="hero.stat.empresa">Empresa</div>
+            <div class="num text-gradient">Estágio</div>
+            <div class="lbl" data-i18n="hero.stat.empresa">Desde set/2025</div>
           </div>
           <div class="hero-stat">
-            <div class="num text-gradient">Full-Stack</div>
-            <div class="lbl" data-i18n="hero.stat.stack">.NET + Next.js</div>
+            <div class="num text-gradient">Fullstack</div>
+            <div class="lbl" data-i18n="hero.stat.stack">C# / .NET + Next.js</div>
           </div>
           <div class="hero-stat">
-            <div class="num text-gradient">IA · RAG</div>
-            <div class="lbl" data-i18n="hero.stat.especialidade">Especialidade</div>
+            <div class="num text-gradient">IA aplicada</div>
+            <div class="lbl" data-i18n="hero.stat.especialidade">RAG e busca vetorial</div>
           </div>
         </div>
       </div>
@@ -138,8 +138,8 @@
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow" data-i18n="proj.eyebrow">Portfólio</span>
-        <h2 class="section-title" data-i18n="proj.title">Projetos selecionados</h2>
-        <p class="section-sub" data-i18n="proj.sub">Da família de agentes de IA para o setor público a aplicações web full-stack e modelagem de dados.</p>
+        <h2 class="section-title" data-i18n="proj.title">Onde já coloquei a mão</h2>
+        <p class="section-sub" data-i18n="proj.sub">Boa parte do meu trabalho é em sistemas internos de clientes, que não posso detalhar — aqui descrevo o tipo de trabalho e o que fiz. Os projetos pessoais e acadêmicos vêm em seguida.</p>
       </div>
 
       <div class="filters" data-bind="filters"></div>
@@ -151,16 +151,16 @@
   <section class="section ia-focus" id="ia">
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow" data-i18n="ia.eyebrow">Diferencial</span>
-        <h2 class="section-title" data-i18n="ia.title">Como construo agentes de IA com RAG</h2>
-        <p class="section-sub" data-i18n="ia.sub">O processo que aplico nos agentes dos sistemas DFLegal e VisaDF: do dado bruto à resposta fundamentada em linguagem natural.</p>
+        <span class="eyebrow" data-i18n="ia.eyebrow">Na prática</span>
+        <h2 class="section-title" data-i18n="ia.title">Como funciona um agente com RAG</h2>
+        <p class="section-sub" data-i18n="ia.sub">O caminho do dado bruto até uma resposta com fonte. É o fluxo que aprendi trabalhando em equipe nos agentes do estágio.</p>
       </div>
 
       <div class="ia-flow">
         <div class="ia-step reveal">
           <span class="ia-num">01</span>
           <h4 data-i18n="ia.step1.title">Ingestão & Embeddings</h4>
-          <p data-i18n="ia.step1.desc">Extraio legislação, schema do banco e dados operacionais, e os transformo em vetores armazenados no pgvector.</p>
+          <p data-i18n="ia.step1.desc">A legislação, o schema do banco e os dados operacionais são recortados em trechos e viram vetores guardados no pgvector.</p>
         </div>
         <div class="ia-step reveal">
           <span class="ia-num">02</span>
@@ -170,56 +170,28 @@
         <div class="ia-step reveal">
           <span class="ia-num">03</span>
           <h4 data-i18n="ia.step3.title">Text-to-SQL & Geração</h4>
-          <p data-i18n="ia.step3.desc">O LLM gera consultas SQL com joins corretos e respostas fundamentadas, combinando RAG e dados ao vivo.</p>
+          <p data-i18n="ia.step3.desc">O modelo gera a consulta SQL e a resposta a partir do contexto recuperado — e a consulta é verificada antes de rodar.</p>
         </div>
         <div class="ia-step reveal">
           <span class="ia-num">04</span>
           <h4 data-i18n="ia.step4.title">Feedback & Observabilidade</h4>
-          <p data-i18n="ia.step4.desc">Conversas persistidas, feedback que vira memória e telemetria de custo, tokens e latência por chamada.</p>
+          <p data-i18n="ia.step4.desc">As conversas ficam salvas e as respostas são conferidas contra a fonte, para pegar o que o modelo inventa.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== GITHUB AO VIVO ===================== -->
-  <section class="section gh" id="github">
+  <!-- ===================== ATIVIDADE NO CÓDIGO ===================== -->
+  <section class="section codigo" id="atividade" hidden>
     <div class="wrap">
       <div class="section-head">
-        <span class="eyebrow" data-i18n="gh.eyebrow">Ao vivo</span>
-        <h2 class="section-title" data-i18n="gh.title">No que estou trabalhando</h2>
-        <p class="section-sub" data-i18n="gh.sub">Dados puxados diretamente do GitHub a cada visita — sempre atualizados com meus últimos commits e repositórios.</p>
+        <span class="eyebrow" data-i18n="cod.eyebrow">Dia a dia</span>
+        <h2 class="section-title" data-i18n="cod.title">Atividade no código</h2>
+        <p class="section-sub" data-i18n="cod.sub">Meu trabalho do dia a dia fica no GitLab da empresa, em repositórios privados. O mapa abaixo é um retrato exportado por script: só datas e contagens de commits, sem nome de projeto nem mensagem.</p>
       </div>
 
-      <!-- Card de perfil + estatísticas -->
-      <div class="gh-top reveal">
-        <div class="gh-profile" data-bind="gh-profile">
-          <div class="gh-skeleton" style="height:84px"></div>
-        </div>
-        <div class="gh-stats" data-bind="gh-stats"></div>
-      </div>
-
-      <div class="gh-columns">
-        <!-- Atividade recente -->
-        <div class="gh-col reveal">
-          <h3 class="gh-col-title" data-i18n="gh.activity">Atividade recente</h3>
-          <ul class="gh-activity" data-bind="gh-activity">
-            <li class="gh-skeleton"></li>
-            <li class="gh-skeleton"></li>
-            <li class="gh-skeleton"></li>
-          </ul>
-        </div>
-
-        <!-- Repositórios em destaque -->
-        <div class="gh-col reveal">
-          <h3 class="gh-col-title" data-i18n="gh.repos">Repositórios recentes</h3>
-          <div class="gh-repos" data-bind="gh-repos">
-            <div class="gh-skeleton" style="height:96px"></div>
-            <div class="gh-skeleton" style="height:96px"></div>
-          </div>
-        </div>
-      </div>
-
-      <a href="#" class="gh-viewall" data-link="github" data-i18n="gh.viewall" target="_blank" rel="noopener">Ver perfil completo no GitHub →</a>
+      <!-- Mapa de commits (snapshot em data/gitlab.json; some se o arquivo não existir) -->
+      <div class="gl-block reveal" data-bind="gl-block" hidden></div>
     </div>
   </section>
 
@@ -227,8 +199,8 @@
   <section class="section contact" id="contato">
     <div class="wrap">
       <span class="eyebrow" style="justify-content:center" data-i18n="contact.eyebrow">Contato</span>
-      <h2 class="section-title" data-i18n="contact.title">Vamos construir algo juntos</h2>
-      <p class="contact-sub" data-i18n="contact.sub">Aberto a oportunidades, colaborações e conversas sobre IA, back-end e desenvolvimento web.</p>
+      <h2 class="section-title" data-i18n="contact.title">Vamos conversar</h2>
+      <p class="contact-sub" data-i18n="contact.sub">Estou em busca de oportunidades na área de TI e aberto a conversar sobre desenvolvimento web e IA. Respondo por e-mail ou LinkedIn.</p>
       <div class="contact-links">
         <a href="#" class="btn btn-primary" data-link="email" data-i18n="contact.email">✉️ Enviar e-mail</a>
         <a href="#" class="btn btn-ghost" data-link="github" target="_blank" rel="noopener">GitHub</a>

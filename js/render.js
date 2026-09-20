@@ -69,7 +69,7 @@ function renderSkills(groups) {
     .map(
       (g) => `
       <div class="skill-group">
-        <p class="skill-group-title">${esc(g.grupo)}</p>
+        <p class="skill-group-title">${esc(field(g, "grupo"))}</p>
         <div class="chips">
           ${g.itens
             .map((i) => {
@@ -205,9 +205,7 @@ export async function hydrate() {
     renderExperience(experience);
     renderProjects(projects);
 
-    document.dispatchEvent(
-      new CustomEvent("content:ready", { detail: { github_user: profile.github_user } })
-    );
+    document.dispatchEvent(new CustomEvent("content:ready"));
   } catch (err) {
     console.error("[PortfolioHUB] erro ao carregar dados:", err);
     const grid = document.querySelector("[data-bind='projects']");
